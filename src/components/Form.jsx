@@ -1,6 +1,15 @@
 import React from "react";
 
+import { useState } from "react";
+
 const Form = () => {
+  const [formData, setFormData] = useState({ name: "", email: "" });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div className="container">
       <Form>
@@ -9,8 +18,9 @@ const Form = () => {
           <input
             type="text"
             name="name"
-            value="name"
             placeholder="Enter your name"
+            value={formData.name}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -18,8 +28,9 @@ const Form = () => {
           <input
             type="email"
             name="email"
-            value="email"
             placeholder="Enter your email"
+            value={formData.email}
+            onChange={handleChange}
           />
         </div>
       </Form>
