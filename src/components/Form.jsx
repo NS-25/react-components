@@ -3,24 +3,23 @@ import React from "react";
 import { useState } from "react";
 
 const Form = () => {
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const [inputData, setInputData] = useState({ name: "", email: "" });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setInputData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleClick = () => {
-    alert(`${formData.name} ${formData.email} `);
+    alert(`${inputData.name} ${inputData.email} `);
   };
 
   const handleFocus = (e) => {
     console.log(e);
   };
-    const handleBlur = (e) => {
-       console.log(e);
+  const handleBlur = (e) => {
+    console.log(e);
   };
-
 
   return (
     <div className="container">
@@ -31,7 +30,7 @@ const Form = () => {
             type="text"
             name="name"
             placeholder="Enter your name"
-            value={formData.name}
+            value={inputData.name}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
@@ -44,7 +43,7 @@ const Form = () => {
             type="email"
             name="email"
             placeholder="Enter your email"
-            value={formData.email}
+            value={inputData.email}
             onChange={handleChange}
             className="border"
           />
