@@ -2,9 +2,12 @@ import React from "react";
 
 import { useState } from "react";
 
+import { useFormContext } from "../context/FormContext";
+
 const Form = () => {
   const [inputData, setInputData] = useState({ name: "", email: "" });
-
+  const { updateFormData } = useFormContext();
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInputData((prev) => ({ ...prev, [name]: value }));
