@@ -7,41 +7,46 @@ import { useFormContext } from "../context/FormContext";
 const Form = () => {
   const [inputData, setInputData] = useState({ name: "", email: "" });
   const { updateFormData } = useFormContext();
-  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInputData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleClick = () => {
-    alert(`${inputData.name} ${inputData.email} `);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateFormData(inputData); // push data to global context
   };
 
-  const handleFocus = (e) => {
-    console.log(e);
-  };
-  const handleBlur = (e) => {
-    console.log(e);
-  };
+  // const handleClick = () => {
+  //   alert(`${inputData.name} ${inputData.email} `);
+  // };
+
+  // const handleFocus = (e) => {
+  //   console.log(e);
+  // };
+  // const handleBlur = (e) => {
+  //   console.log(e);
+  // };
 
   return (
     <div className="container">
-      <form>
+      <form onSubmit={handleSubmit} className="border ">
         <div className="mb-2">
-          <label className="label">Name:</label>
+          <label className="form-label">Name:</label>
           <input
             type="text"
             name="name"
             placeholder="Enter your name"
             value={inputData.name}
             onChange={handleChange}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
+            // onFocus={handleFocus}
+            // onBlur={handleBlur}
             className="border"
           />
         </div>
         <div>
-          <label className="label">Email:</label>
+          <label className="form-label">Email:</label>
           <input
             type="email"
             name="email"
@@ -52,7 +57,11 @@ const Form = () => {
           />
         </div>
         <div>
-          <button className="border rounded" onClick={handleClick}>
+          <button
+            type="submit"
+            className="border rounded"
+            onClick={handleClick}
+          >
             Submit
           </button>
         </div>
