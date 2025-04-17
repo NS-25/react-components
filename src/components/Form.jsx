@@ -10,30 +10,51 @@ const Form = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleClick = () => {
+    alert(`${formData.name} ${formData.email} `);
+  };
+
+  const handleFocus = (e) => {
+    console.log(e);
+  };
+    const handleBlur = (e) => {
+       console.log(e);
+  };
+
+
   return (
     <div className="container">
-      <Form>
+      <form>
         <div className="mb-2">
-          <label className="label">Name</label>
+          <label className="label">Name:</label>
           <input
             type="text"
             name="name"
             placeholder="Enter your name"
             value={formData.name}
             onChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            className="border"
           />
         </div>
         <div>
-          <label className="label">Email</label>
+          <label className="label">Email:</label>
           <input
             type="email"
             name="email"
             placeholder="Enter your email"
             value={formData.email}
             onChange={handleChange}
+            className="border"
           />
         </div>
-      </Form>
+        <div>
+          <button className="border rounded" onClick={handleClick}>
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
