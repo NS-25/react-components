@@ -3,7 +3,7 @@ import React from "react";
 const UserProfileForm = () => {
   return (
     <>
-      <div className="container">
+      <div className="container mt-4">
         <h1>User Profile</h1>
         <form className="border">
           {/* firstname and lastname */}
@@ -41,6 +41,19 @@ const UserProfileForm = () => {
               placeholder="(000)-000-0000"
               className="border"
             />
+          </div>
+          {/* Gender portion */}
+          <div className="mb-4">
+            <label htmlFor="gender">
+              <select name="gender">
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="other">Other</option>
+                <option value="not prefer to answer">
+                  Not to prefer to answer
+                </option>
+              </select>
+            </label>
           </div>
         </form>
       </div>
