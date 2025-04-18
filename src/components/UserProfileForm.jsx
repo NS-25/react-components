@@ -12,8 +12,10 @@ const UserProfileForm = () => {
     radio: "",
   });
 
+  console.log("userData ", userData);
+
   const handleFirstNameChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     const updatedUserData = {
       ...userData,
       firstName: e.target.value,
@@ -23,6 +25,8 @@ const UserProfileForm = () => {
   };
 
   const handleLastNameChange = (e) => {
+    // console.log(e.target.value);
+
     const updatedUserData = {
       ...userData,
       lastName: e.target.value,
@@ -31,6 +35,8 @@ const UserProfileForm = () => {
   };
 
   const handleEmailChange = (e) => {
+    // console.log(e.target.value);
+
     const updatedUserData = {
       ...userData,
       email: e.target.value,
@@ -39,6 +45,8 @@ const UserProfileForm = () => {
   };
 
   const handlePhoneChange = (e) => {
+    // console.log(e.target.value);
+
     const updatedUserData = {
       ...userData,
       phone: e.target.value,
@@ -47,6 +55,8 @@ const UserProfileForm = () => {
   };
 
   const handleGenderChange = (e) => {
+    // console.log(e.target.value);
+
     const updatedUserData = {
       ...userData,
       gender: e.target.value,
@@ -55,6 +65,8 @@ const UserProfileForm = () => {
   };
 
   const handleDobChange = (e) => {
+    // console.log(e.target.value);
+
     const updatedUserData = {
       ...userData,
       dob: e.target.value,
@@ -63,6 +75,8 @@ const UserProfileForm = () => {
   };
 
   const handleRadioChange = (e) => {
+    // console.log(e.target.value);
+
     const updatedUserData = {
       ...userData,
       radio: e.target.value,
@@ -153,10 +167,16 @@ const UserProfileForm = () => {
               type="radio"
               name="radio"
               className="mr-2"
+              value="false"
               onChange={handleRadioChange}
             />
             <label htmlFor="radio">over 21:</label>
-            <input type="radio" name="radio" onChange={handleRadioChange} />
+            <input
+              type="radio"
+              name="radio"
+              onChange={handleRadioChange}
+              value="true"
+            />
           </div>
           {/* Submit button portion */}
         </form>
