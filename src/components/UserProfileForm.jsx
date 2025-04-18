@@ -21,7 +21,31 @@ const UserProfileForm = () => {
     setUserData(updatedUserData);
   };
 
-  console.log("userData : ", userData);
+  const handleLastNameChange = (e) => {
+    const updatedUserData = {
+      ...userData,
+      lastName: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
+
+  const handleEmailChange = (e) => {
+    const updatedUserData = {
+      ...userData,
+      email: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
+
+  const handlePhoneChange = () => {
+    const updatedUserData = {
+      ...userData,
+      phone: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
+
+  // console.log("userData : ", userData);
 
   return (
     <>
@@ -43,6 +67,7 @@ const UserProfileForm = () => {
               name="lastname"
               placeholder="Last Name"
               className="border ml-2"
+              onChange={handleLastNameChange}
             />
           </div>
           {/* email portion */}
@@ -53,6 +78,7 @@ const UserProfileForm = () => {
               name="email"
               placeholder="Enter your email"
               className="border"
+              onChange={handleEmailChange}
             />
           </div>
           {/* phone number */}
@@ -63,6 +89,7 @@ const UserProfileForm = () => {
               name="phone"
               placeholder="(000)-000-0000"
               className="border"
+              onChange={handlePhoneChange}
             />
           </div>
           {/* Gender portion */}
@@ -88,9 +115,9 @@ const UserProfileForm = () => {
           </div>
           {/* radio portion */}
           <div className="mt-2">
-            <label htmlFor="radio">under 21</label>
-            <input type="radio" name="radio" />
-            <label htmlFor="radio">over 21</label>
+            <label htmlFor="radio">under 21:</label>
+            <input type="radio" name="radio" className="mr-2" />
+            <label htmlFor="radio">over 21:</label>
             <input type="radio" name="radio" />
           </div>
           {/* Submit button portion */}
