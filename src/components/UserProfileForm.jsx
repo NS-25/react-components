@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import RadioGroup from "./RadioGroup/RadioGroup";
 
 const UserProfileForm = () => {
   const [userData, setUserData] = useState({
@@ -9,8 +10,10 @@ const UserProfileForm = () => {
     phone: "",
     gender: "",
     dob: "",
-    radio: "",
+    grade: "1",
   });
+
+  const [isOver, setIsOver] = useState(false);
 
   console.log("userData ", userData);
 
@@ -83,7 +86,26 @@ const UserProfileForm = () => {
     };
     setUserData(updatedUserData);
   };
+
+  // if (isOver === true) {
+  //   setIsOver(userData.name);
+  // } else {
+  //   setIsOver(isOver);
+  // }
   // console.log("userData : ", userData);
+
+  const handleGradeChange = (e) => {
+    console.log(e.target.value);
+    const updatedUserData = {
+      ...userData,
+      grade: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
+
+  const onGradeChange = (value) => {
+    console.log(value);
+  };
 
   return (
     <>
@@ -161,23 +183,33 @@ const UserProfileForm = () => {
             />
           </div>
           {/* radio portion */}
-          <div className="mt-2">
+          {/* <div className="mt-2">
             <label htmlFor="radio">under 21:</label>
             <input
               type="radio"
-              name="radio"
+              name="below the age"
               className="mr-2"
-              value="false"
+              value={userData.name}
               onChange={handleRadioChange}
             />
             <label htmlFor="radio">over 21:</label>
             <input
               type="radio"
-              name="radio"
+              name="eligible age"
               onChange={handleRadioChange}
-              value="true"
+              value={userData.name}
+            />
+          </div> */}
+
+          <div className="mt-2">
+            <RadioGroup
+              values={["1", "2", "3", "4", "5"]}
+              label="Select grade"
+              name="grade"
+              onUpdate={onGradeChange}
             />
           </div>
+
           {/* Submit button portion */}
         </form>
       </div>
