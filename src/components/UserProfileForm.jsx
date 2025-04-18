@@ -1,6 +1,28 @@
 import React from "react";
+import { useState } from "react";
 
 const UserProfileForm = () => {
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    gender: "",
+    dob: "",
+  });
+
+  const handleFirstNameChange = (e) => {
+    console.log(e.target.value);
+    const updatedUserData = {
+      ...userData,
+      firstName: e.target.value,
+    };
+
+    setUserData(updatedUserData);
+  };
+
+  console.log("userData : ", userData);
+
   return (
     <>
       <div className="container mt-4">
@@ -14,6 +36,7 @@ const UserProfileForm = () => {
               name="firstname"
               placeholder="First Name"
               className="border "
+              onChange={handleFirstNameChange}
             />
             <input
               type="text"
@@ -63,6 +86,7 @@ const UserProfileForm = () => {
             <label htmlFor="date">DOB:</label>
             <input type="date" name="birthday" className="border" />
           </div>
+          {/* Submit button portion */}
         </form>
       </div>
     </>
