@@ -77,15 +77,15 @@ const UserProfileForm = () => {
     setUserData(updatedUserData);
   };
 
-  const handleRadioChange = (e) => {
-    // console.log(e.target.value);
+  // const handleRadioChange = (e) => {
+  //   // console.log(e.target.value);
 
-    const updatedUserData = {
-      ...userData,
-      radio: e.target.value,
-    };
-    setUserData(updatedUserData);
-  };
+  //   const updatedUserData = {
+  //     ...userData,
+  //     radio: e.target.value,
+  //   };
+  //   setUserData(updatedUserData);
+  // };
 
   // if (isOver === true) {
   //   setIsOver(userData.name);
@@ -94,14 +94,14 @@ const UserProfileForm = () => {
   // }
   // console.log("userData : ", userData);
 
-  const handleGradeChange = (e) => {
-    console.log(e.target.value);
-    const updatedUserData = {
-      ...userData,
-      grade: e.target.value,
-    };
-    setUserData(updatedUserData);
-  };
+  // const handleGradeChange = (e) => {
+  //   console.log(e.target.value);
+  //   const updatedUserData = {
+  //     ...userData,
+  //     grade: e.target.value,
+  //   };
+  //   setUserData(updatedUserData);
+  // };
 
   const onGradeChange = (value) => {
     console.log(value);
