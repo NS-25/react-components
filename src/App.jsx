@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./components/Form";
 import { FormProvider, useFormContext } from "./context/FormContext";
+import UserProfileForm from "./components/UserProfileForm";
 
 const DisPlayForm = () => {
   const { formData } = useFormContext();
@@ -31,6 +32,9 @@ const App = () => {
           <DisPlayForm />
         </div>
       </FormProvider>
+      <div>
+        <UserProfileForm />
+      </div>
     </>
   );
 };

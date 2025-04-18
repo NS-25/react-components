@@ -60,7 +60,7 @@ const Form = () => {
           <button
             type="submit"
             className="border rounded"
-            onClick={handleClick}
+            // onClick={handleClick}
           >
             Submit
           </button>
