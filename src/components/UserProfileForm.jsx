@@ -9,6 +9,7 @@ const UserProfileForm = () => {
     phone: "",
     gender: "",
     dob: "",
+    radio: "",
   });
 
   const handleFirstNameChange = (e) => {
@@ -37,7 +38,7 @@ const UserProfileForm = () => {
     setUserData(updatedUserData);
   };
 
-  const handlePhoneChange = () => {
+  const handlePhoneChange = (e) => {
     const updatedUserData = {
       ...userData,
       phone: e.target.value,
@@ -45,6 +46,29 @@ const UserProfileForm = () => {
     setUserData(updatedUserData);
   };
 
+  const handleGenderChange = (e) => {
+    const updatedUserData = {
+      ...userData,
+      gender: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
+
+  const handleDobChange = (e) => {
+    const updatedUserData = {
+      ...userData,
+      dob: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
+
+  const handleRadioChange = (e) => {
+    const updatedUserData = {
+      ...userData,
+      radio: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
   // console.log("userData : ", userData);
 
   return (
@@ -97,7 +121,11 @@ const UserProfileForm = () => {
             <label htmlFor="gender">
               Gender:
               <label />
-              <select name="gender" className="border">
+              <select
+                name="gender"
+                className="border"
+                onChange={handleGenderChange}
+              >
                 <option value=" "></option>
                 <option value="male">male</option>
                 <option value="female">female</option>
@@ -111,14 +139,24 @@ const UserProfileForm = () => {
           {/* Date of Birth */}
           <div className="mt-2">
             <label htmlFor="date">DOB:</label>
-            <input type="date" name="birthday" className="border" />
+            <input
+              type="date"
+              name="birthday"
+              className="border"
+              onChange={handleDobChange}
+            />
           </div>
           {/* radio portion */}
           <div className="mt-2">
             <label htmlFor="radio">under 21:</label>
-            <input type="radio" name="radio" className="mr-2" />
+            <input
+              type="radio"
+              name="radio"
+              className="mr-2"
+              onChange={handleRadioChange}
+            />
             <label htmlFor="radio">over 21:</label>
-            <input type="radio" name="radio" />
+            <input type="radio" name="radio" onChange={handleRadioChange} />
           </div>
           {/* Submit button portion */}
         </form>
