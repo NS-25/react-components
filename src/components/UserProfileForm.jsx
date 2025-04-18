@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import RadioGroup from "./RadioGroup/RadioGroup";
-import GenderGroup from "./GenderGroup/GenderGroup";
+import Select from "./Select/Select";
 
 const UserProfileForm = () => {
   const [userData, setUserData] = useState({
@@ -108,7 +108,7 @@ const UserProfileForm = () => {
     console.log(value);
   };
 
-  const onGenderChange = (value) => {
+  const onSelectChange = (value) => {
     console.log(value);
   };
 
@@ -216,11 +216,17 @@ const UserProfileForm = () => {
           </div>
 
           <div>
-            <GenderGroup
-              onUpdateGender={onGenderChange}
-              label=" Select Gender"
+            <Select
+              onUpdate={onSelectChange}
+              label="Select Gender"
               name="Gender"
-              items={["male", "female", "not prefer to answer", "other"]}
+              values={[
+                { key: "default", label: "" },
+                { key: "male", label: "Male" },
+                { key: "female", label: "Female" },
+                { key: "noAnswer", label: "Not prefer to answer" },
+                { key: "other", label: "Other" },
+              ]}
             />
           </div>
 
