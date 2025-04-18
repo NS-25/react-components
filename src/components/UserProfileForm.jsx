@@ -22,11 +22,17 @@ const UserProfileForm = () => {
               className="border"
             />
           </div>
-        {/* email portion */}
-        
-<div>
-
-</div>
+          {/* email portion */}
+          <div className="mb-4">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              className="border"
+            />
+          </div>
+          
         </form>
       </div>
     </>
