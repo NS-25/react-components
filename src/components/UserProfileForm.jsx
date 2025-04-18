@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import RadioGroup from "./RadioGroup/RadioGroup";
+import GenderGroup from "./GenderGroup/GenderGroup";
 
 const UserProfileForm = () => {
   const [userData, setUserData] = useState({
@@ -57,15 +58,15 @@ const UserProfileForm = () => {
     setUserData(updatedUserData);
   };
 
-  const handleGenderChange = (e) => {
-    // console.log(e.target.value);
+  // const handleGenderChange = (e) => {
+  //   // console.log(e.target.value);
 
-    const updatedUserData = {
-      ...userData,
-      gender: e.target.value,
-    };
-    setUserData(updatedUserData);
-  };
+  //   const updatedUserData = {
+  //     ...userData,
+  //     gender: e.target.value,
+  //   };
+  //   setUserData(updatedUserData);
+  // };
 
   const handleDobChange = (e) => {
     // console.log(e.target.value);
@@ -104,6 +105,10 @@ const UserProfileForm = () => {
   // };
 
   const onGradeChange = (value) => {
+    console.log(value);
+  };
+
+  const onGenderChange = (value) => {
     console.log(value);
   };
 
@@ -153,7 +158,7 @@ const UserProfileForm = () => {
             />
           </div>
           {/* Gender portion */}
-          <div className="mb-4 mt-2">
+          {/* <div className="mb-4 mt-2">
             <label htmlFor="gender">
               Gender:
               <label />
@@ -171,7 +176,7 @@ const UserProfileForm = () => {
                 </option>
               </select>
             </label>
-          </div>
+          </div> */}
           {/* Date of Birth */}
           <div className="mt-2">
             <label htmlFor="date">DOB:</label>
@@ -207,6 +212,15 @@ const UserProfileForm = () => {
               label="Select grade"
               name="grade"
               onUpdate={onGradeChange}
+            />
+          </div>
+
+          <div>
+            <GenderGroup
+              onUpdateGender={onGenderChange}
+              label=" Select Gender"
+              name="Gender"
+              items={["male", "female", "not prefer to answer", "other"]}
             />
           </div>
 
