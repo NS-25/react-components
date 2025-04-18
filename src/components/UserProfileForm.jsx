@@ -86,6 +86,13 @@ const UserProfileForm = () => {
             <label htmlFor="date">DOB:</label>
             <input type="date" name="birthday" className="border" />
           </div>
+          {/* radio portion */}
+          <div className="mt-2">
+            <label htmlFor="radio">under 21</label>
+            <input type="radio" name="radio" />
+            <label htmlFor="radio">over 21</label>
+            <input type="radio" name="radio" />
+          </div>
           {/* Submit button portion */}
         </form>
       </div>
