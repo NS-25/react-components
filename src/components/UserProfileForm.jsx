@@ -48,6 +48,7 @@ const UserProfileForm = () => {
               Gender
               <label />
               <select name="gender" className="border">
+                <option value="" selected></option>
                 <option value="male">male</option>
                 <option value="female">female</option>
                 <option value="other">Other</option>
