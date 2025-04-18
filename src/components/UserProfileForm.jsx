@@ -8,23 +8,23 @@ const UserProfileForm = () => {
         <form className="border">
           {/* firstname and lastname */}
           <div className="mb-4">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Name:</label>
             <input
               type="text"
               name="firstname"
               placeholder="First Name"
-              className="border"
+              className="border "
             />
             <input
               type="text"
               name="lastname"
               placeholder="Last Name"
-              className="border"
+              className="border ml-2"
             />
           </div>
           {/* email portion */}
           <div className="mb-4">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email:</label>
             <input
               type="email"
               name="email"
@@ -34,7 +34,7 @@ const UserProfileForm = () => {
           </div>
           {/* phone number */}
           <div>
-            <label htmlFor="phone">Phone</label>
+            <label htmlFor="phone">Phone:</label>
             <input
               type="tel"
               name="phone"
@@ -43,12 +43,12 @@ const UserProfileForm = () => {
             />
           </div>
           {/* Gender portion */}
-          <div className="mb-4">
+          <div className="mb-4 mt-2">
             <label htmlFor="gender">
-              Gender
+              Gender:
               <label />
               <select name="gender" className="border">
-                <option value="" selected></option>
+                <option value=" "></option>
                 <option value="male">male</option>
                 <option value="female">female</option>
                 <option value="other">Other</option>
@@ -57,6 +57,11 @@ const UserProfileForm = () => {
                 </option>
               </select>
             </label>
+          </div>
+          {/* Date of Birth */}
+          <div className="mt-2">
+            <label htmlFor="date">DOB:</label>
+            <input type="date" name="birthday" className="border" />
           </div>
         </form>
       </div>
