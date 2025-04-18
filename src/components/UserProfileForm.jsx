@@ -8,7 +8,7 @@ const UserProfileForm = () => {
         <form className="border">
           {/* firstname and lastname */}
           <div className="mb-4">
-            <label className="form-label">Name</label>
+            <label htmlFor="name">Name</label>
             <input
               type="text"
               name="firstname"
@@ -24,7 +24,7 @@ const UserProfileForm = () => {
           </div>
           {/* email portion */}
           <div className="mb-4">
-            <label className="form-label">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -32,7 +32,16 @@ const UserProfileForm = () => {
               className="border"
             />
           </div>
-          
+          {/* phone number */}
+          <div>
+            <label htmlFor="phone">Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="(000)-000-0000"
+              className="border"
+            />
+          </div>
         </form>
       </div>
     </>
