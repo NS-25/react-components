@@ -215,7 +215,7 @@ const UserProfileForm = () => {
             />
           </div>
 
-          <div>
+          {/* <div>
             <Select
               onUpdate={onSelectChange}
               label="Select Gender"
@@ -228,7 +228,7 @@ const UserProfileForm = () => {
                 { key: "other", label: "Other" },
               ]}
             />
-          </div>
+          </div> */}
 
           {/* Submit button portion */}
         </form>
