@@ -230,6 +230,28 @@ const UserProfileForm = () => {
             />
           </div> */}
 
+          <div>
+            <Select
+              label="Select option:"
+              name={gender}
+              values={[
+                {
+                  key: "default",
+                  label: "--select--",
+                  key: "male",
+                  label: "Male",
+                  key: "female",
+                  label: "Female",
+                  key: "not prefer",
+                  label: "Not prefer to answer",
+                  key: "other",
+                  label: "other",
+                },
+              ]}
+              onUpdate={onSelectChange}
+            />
+          </div>
+
           {/* Submit button portion */}
         </form>
       </div>
