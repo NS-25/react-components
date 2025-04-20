@@ -22,10 +22,15 @@ const Select = ({ onUpdate, label, values, name }) => {
 
   return (
     <div>
-      <div className="select">
+      <div className="select ">
         <label htmlFor={name}>
           <span>{label}</span>
-          <select name={name} value={selectedItem} onChange={handleSelected}>
+          <select
+            name={name}
+            value={selectedItem}
+            onChange={handleSelected}
+            className="border"
+          >
             {renderOptions(values)}
           </select>
         </label>
