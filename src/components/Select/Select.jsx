@@ -42,11 +42,13 @@
 // export default Select;
 
 import React from "react";
+import { useState } from "react";
 
-const Select = () => {
+const Select = ({ label, name, values }) => {
   return (
-    <div>
-      <h1>hi</h1>
+    <div className="select">
+      <label htmlFor={name}></label>
+      <select name={name} className="border"></select>
     </div>
   );
 };
