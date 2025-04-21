@@ -41,39 +41,57 @@
 
 // export default Select;
 
+// import React from "react";
+// import { useState } from "react";
+
+// const Select = ({ label, name, values, onUpdate }) => {
+//   const [selectedItem, setSelectedItem] = useState("default");
+
+//   const handleSelectedChange = (event) => {
+//     const selected = event.target.value;
+//     setSelectedItem(selected);
+//     onUpdate(selected);
+//   };
+
+//   const renderOptions = (values) => {
+//     return values.map((value) => {
+//       return (
+//         <option key={value.key} value={value.key}>
+//           {value.label}
+//         </option>
+//       );
+//     });
+//   };
+//   return (
+//     <div className="select">
+//       <label htmlFor={name}>{label}</label>
+
+//       <select
+//         name={name}
+//         className="border"
+//         value={selectedItem}
+//         onChange={handleSelectedChange}
+//       >
+//         {renderOptions(values)}
+//       </select>
+//     </div>
+//   );
+// };
+
+// export default Select;
+
 import React from "react";
-import { useState } from "react";
 
 const Select = ({ label, name, values, onUpdate }) => {
   const [selectedItem, setSelectedItem] = useState("default");
-
   const handleSelectedChange = (event) => {
     const selected = event.target.value;
     setSelectedItem(selected);
     onUpdate(selected);
   };
-
-  const renderOptions = (values) => {
-    return values.map((value) => {
-      return (
-        <option key={value.key} value={value.key}>
-          {value.label}
-        </option>
-      );
-    });
-  };
   return (
-    <div className="select">
+    <div>
       <label htmlFor={name}>{label}</label>
-
-      <select
-        name={name}
-        className="border"
-        value={selectedItem}
-        onChange={handleSelectedChange}
-      >
-        {renderOptions(values)}
-      </select>
     </div>
   );
 };

@@ -12,6 +12,7 @@ const RadioGroup = ({ onUpdate, values, name, label }) => {
     return values.map((value) => {
       return (
         <input
+          key={value.key}
           type="radio"
           name={name}
           value={value}

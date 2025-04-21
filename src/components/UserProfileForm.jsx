@@ -58,15 +58,15 @@ const UserProfileForm = () => {
     setUserData(updatedUserData);
   };
 
-  // const handleGenderChange = (e) => {
-  //   // console.log(e.target.value);
+  const handleGenderChange = (e) => {
+    // console.log(e.target.value);
 
-  //   const updatedUserData = {
-  //     ...userData,
-  //     gender: e.target.value,
-  //   };
-  //   setUserData(updatedUserData);
-  // };
+    const updatedUserData = {
+      ...userData,
+      gender: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
 
   const handleDobChange = (e) => {
     // console.log(e.target.value);
@@ -78,15 +78,15 @@ const UserProfileForm = () => {
     setUserData(updatedUserData);
   };
 
-  // const handleRadioChange = (e) => {
-  //   // console.log(e.target.value);
+  const handleRadioChange = (e) => {
+    // console.log(e.target.value);
 
-  //   const updatedUserData = {
-  //     ...userData,
-  //     radio: e.target.value,
-  //   };
-  //   setUserData(updatedUserData);
-  // };
+    const updatedUserData = {
+      ...userData,
+      radio: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
 
   // if (isOver === true) {
   //   setIsOver(userData.name);
@@ -95,14 +95,14 @@ const UserProfileForm = () => {
   // }
   // console.log("userData : ", userData);
 
-  // const handleGradeChange = (e) => {
-  //   console.log(e.target.value);
-  //   const updatedUserData = {
-  //     ...userData,
-  //     grade: e.target.value,
-  //   };
-  //   setUserData(updatedUserData);
-  // };
+  const handleGradeChange = (e) => {
+    console.log(e.target.value);
+    const updatedUserData = {
+      ...userData,
+      grade: e.target.value,
+    };
+    setUserData(updatedUserData);
+  };
 
   const onGradeChange = (value) => {
     console.log(value);
@@ -158,7 +158,7 @@ const UserProfileForm = () => {
             />
           </div>
           {/* Gender portion */}
-          {/* <div className="mb-4 mt-2">
+          <div className="mb-4 mt-2">
             <label htmlFor="gender">
               Gender:
               <label />
@@ -176,7 +176,7 @@ const UserProfileForm = () => {
                 </option>
               </select>
             </label>
-          </div> */}
+          </div>
           {/* Date of Birth */}
           <div className="mt-2">
             <label htmlFor="date">DOB:</label>
@@ -188,7 +188,7 @@ const UserProfileForm = () => {
             />
           </div>
           {/* radio portion */}
-          {/* <div className="mt-2">
+          <div className="mt-2">
             <label htmlFor="radio">under 21:</label>
             <input
               type="radio"
@@ -204,7 +204,7 @@ const UserProfileForm = () => {
               onChange={handleRadioChange}
               value={userData.name}
             />
-          </div> */}
+          </div>
 
           <div className="mt-2">
             <RadioGroup
@@ -233,20 +233,13 @@ const UserProfileForm = () => {
           <div>
             <Select
               label="Select option:"
-              name={gender}
+              name="gender"
               values={[
-                {
-                  key: "default",
-                  label: "--select--",
-                  key: "male",
-                  label: "Male",
-                  key: "female",
-                  label: "Female",
-                  key: "not prefer",
-                  label: "Not prefer to answer",
-                  key: "other",
-                  label: "other",
-                },
+                { key: "default", label: "--select--" },
+                { key: "male", label: "Male" },
+                { key: "female", label: "Female" },
+                { key: "not prefer", label: "Not prefer to answer" },
+                { key: "other", label: "other" },
               ]}
               onUpdate={onSelectChange}
             />
