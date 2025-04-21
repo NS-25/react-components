@@ -89,9 +89,16 @@ const Select = ({ label, name, values, onUpdate }) => {
     setSelectedItem(selected);
     onUpdate(selected);
   };
+
   return (
     <div>
       <label htmlFor={name}>{label}</label>
+      <select
+        name={name}
+        className="border"
+        value={values}
+        onChange={handleSelectedChange}
+      ></select>
     </div>
   );
 };
