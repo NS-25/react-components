@@ -2,7 +2,7 @@ import React from "react";
 import Form from "./components/Form";
 import { FormProvider, useFormContext } from "./context/FormContext";
 import UserProfileForm from "./components/UserProfileForm";
-
+import UserProfile from "./components/Form/UserProfile";
 const DisPlayForm = () => {
   const { formData } = useFormContext();
 
@@ -22,7 +22,12 @@ const DisPlayForm = () => {
   );
 };
 
+// User profile
+
 const App = () => {
+  const handleUserSubmit = (data) => {
+    console.log("User Profile Data: ", data);
+  };
   return (
     <>
       <FormProvider>
@@ -34,6 +39,10 @@ const App = () => {
       </FormProvider>
       <div>
         <UserProfileForm />
+      </div>
+      <div mt-4>
+        <h2>User Profile</h2>
+        <UserProfile onSubmit={handleUserSubmit} />
       </div>
     </>
   );
