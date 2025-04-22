@@ -33,6 +33,7 @@ const UserProfile = ({ onSubmit }) => {
             placeholder="Enter your first name"
             value={userForm.firstName}
             onChange={handleChange}
+            className="border"
           />
         </div>
         <div>
@@ -43,6 +44,7 @@ const UserProfile = ({ onSubmit }) => {
             placeholder="Enter your last name"
             value={userForm.lastName}
             onChange={handleChange}
+            className="border"
           />
         </div>
         <div>
@@ -53,12 +55,18 @@ const UserProfile = ({ onSubmit }) => {
             placeholder="Enter your email"
             value={userForm.email}
             onChange={handleChange}
+            className="border"
           />
         </div>
 
         <div>
           <label>Gender:</label>
-          <select name="gender" value={userForm.gender} onChange={handleChange}>
+          <select
+            name="gender"
+            value={userForm.gender}
+            onChange={handleChange}
+            className="border"
+          >
             <option value="default">-- Select Gender --</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
