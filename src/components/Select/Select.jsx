@@ -1,5 +1,3 @@
-
-
 // import React from "react";
 // import { useState } from "react";
 
@@ -95,7 +93,11 @@ const Select = ({ label, name, values, onUpdate }) => {
 
   const renderOptions = (values) => {
     return values.map((value) => {
-      return <option key={value.key} value={value.key}>{value.label}</option>;
+      return (
+        <option key={value.key} value={value.key}>
+          {value.label}
+        </option>
+      );
     });
   };
 
@@ -105,9 +107,11 @@ const Select = ({ label, name, values, onUpdate }) => {
       <select
         name={name}
         className="border"
-        value={values}
+        value={selectedItem}
         onChange={handleSelectedChange}
-      ></select>
+      >
+        {renderOptions(values)}
+      </select>
     </div>
   );
 };
