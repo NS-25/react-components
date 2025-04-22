@@ -40,7 +40,7 @@ const App = () => {
       <div>
         <UserProfileForm />
       </div>
-      <div mt-4>
+      <div className="mt-4">
         <h2>User Profile</h2>
         <UserProfile onSubmit={handleUserSubmit} />
       </div>

@@ -10,7 +10,7 @@ const UserProfile = ({ onSubmit }) => {
   });
 
   const handleChange = (event) => {
-    const { name, value } = event.target.value;
+    const { name, value } = event.target;
     setUserForm((prev) => ({
       ...prev,
       [name]: value,
@@ -19,7 +19,7 @@ const UserProfile = ({ onSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onsubmit(userForm);
+    onSubmit(userForm);
   };
 
   return (
@@ -74,7 +74,9 @@ const UserProfile = ({ onSubmit }) => {
             <option value="noAnswer">Not prefer to answer</option>
           </select>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className="border rounded">
+          Submit
+        </button>
       </form>
     </div>
   );
