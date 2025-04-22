@@ -1,3 +1,5 @@
+
+
 // import React from "react";
 // import { useState } from "react";
 
@@ -84,10 +86,17 @@ import React from "react";
 
 const Select = ({ label, name, values, onUpdate }) => {
   const [selectedItem, setSelectedItem] = useState("default");
+
   const handleSelectedChange = (event) => {
     const selected = event.target.value;
     setSelectedItem(selected);
     onUpdate(selected);
+  };
+
+  const renderOptions = (values) => {
+    return values.map((value) => {
+      return <option key={value.key} value={value.key}>{value.label}</option>;
+    });
   };
 
   return (
