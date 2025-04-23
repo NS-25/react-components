@@ -27,6 +27,14 @@ const UserProfile = ({ onSubmit }) => {
     if (!userForm.firstName.trim()) {
       newErrors.firstName = "First name is required";
     }
+    if (!userForm.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
+    }
+    if (!userForm.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\. \S+/.test(userForm.email)) {
+      newErrors.email = "Email is not valid";
+    }
   };
 
   const handleSubmit = (event) => {
