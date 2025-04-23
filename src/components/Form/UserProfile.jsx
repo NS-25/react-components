@@ -35,11 +35,21 @@ const UserProfile = ({ onSubmit }) => {
     } else if (!/\S+@\S+\. \S+/.test(userForm.email)) {
       newErrors.email = "Email is not valid";
     }
+    if (userForm.gender === "default") {
+      newErrors.gender = "Please select a gender";
+    }
+    return newErrors;
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
     onSubmit(userForm);
+
+    if (Object.keys(validationErrors).length === 0) {
+      onSubmit(userForm); // only submit if no errors
+    }
   };
 
   return (
