@@ -9,6 +9,9 @@ const UserProfile = ({ onSubmit }) => {
     gender: "default",
   });
 
+  // check validation
+  const [errors, setErrors] = useState({}); // where we keep the warning message
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUserForm((prev) => ({
