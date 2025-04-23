@@ -65,6 +65,9 @@ const UserProfile = ({ onSubmit }) => {
             onChange={handleChange}
             className="border"
           />
+          {errors.firstName && (
+            <p style={{ color: "red" }}>{errors.firstName}</p>
+          )}
         </div>
         <div>
           <label htmlFor="lastName">LastName:</label>
@@ -76,6 +79,7 @@ const UserProfile = ({ onSubmit }) => {
             onChange={handleChange}
             className="border"
           />
+          {errors.lastName && <p style={{ color: "red" }}>{errors.lastName}</p>}
         </div>
         <div>
           <label htmlFor="email">Email:</label>
@@ -87,6 +91,7 @@ const UserProfile = ({ onSubmit }) => {
             onChange={handleChange}
             className="border"
           />
+          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
         </div>
 
         <div>
@@ -103,6 +108,7 @@ const UserProfile = ({ onSubmit }) => {
             <option value="other">Other</option>
             <option value="noAnswer">Not prefer to answer</option>
           </select>
+          {errors.gender && <p style={{ color: "red" }}>{errors.gender}</p>}
         </div>
         <button type="submit" className="border rounded">
           Submit

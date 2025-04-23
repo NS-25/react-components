@@ -27,6 +27,7 @@ const DisPlayForm = () => {
 const App = () => {
   const handleUserSubmit = (data) => {
     console.log("User Profile Data: ", data);
+    alert("Form submitted successfully!");
   };
   return (
     <>
