@@ -20,6 +20,15 @@ const UserProfile = ({ onSubmit }) => {
     }));
   };
 
+  // validation fields
+
+  const validate = () => {
+    const newErrors = {};
+    if (!userForm.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(userForm);
