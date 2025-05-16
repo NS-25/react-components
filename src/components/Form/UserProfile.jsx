@@ -32,7 +32,7 @@ const UserProfile = ({ onSubmit }) => {
     }
     if (!userForm.email.trim()) {
       newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\. \S+/.test(userForm.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(userForm.email)) {
       newErrors.email = "Email is not valid";
     }
     if (userForm.gender === "default") {
