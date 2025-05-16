@@ -1,6 +1,20 @@
 import React from "react";
-
+import { useState } from "react";
 const LoginForm = () => {
+  const [inputData, setInputData] = useState({
+    name: "",
+    password: "",
+  });
+
+  const FormChange = (event) => {
+    const { name, value } = event.target;
+    setInputData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputData);
+  };
   return (
     <div className="container">
       <form className="border">
@@ -13,6 +27,7 @@ const LoginForm = () => {
             placeholder="Enter Username"
             name="username"
             className="border"
+            handleChange={FormChange}
           />
         </div>
         <div className="mb-2">
@@ -24,6 +39,7 @@ const LoginForm = () => {
             placeholder="Enter Password"
             name="password"
             className="border"
+            handleChange={FormChange}
           />
         </div>
         <div className="mb-2">
@@ -33,7 +49,11 @@ const LoginForm = () => {
           </label>
         </div>
         <div>
-          <button type="submit" className="border rounded">
+          <button
+            type="submit"
+            className="border rounded"
+            onSubmit={handleSubmit}
+          >
             Login
           </button>
         </div>

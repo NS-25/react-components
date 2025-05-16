@@ -4,6 +4,7 @@ import { FormProvider, useFormContext } from "./context/FormContext";
 import UserProfileForm from "./components/UserProfileForm";
 import UserProfile from "./components/Form/UserProfile";
 import LoginForm from "./components/Login/LoginForm";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 const DisPlayForm = () => {
   const { formData } = useFormContext();
@@ -48,8 +49,11 @@ const App = () => {
         <UserProfile onSubmit={handleUserSubmit} />
       </div>
       <div>
-        <p>User Login</p>
-        <LoginForm />
+        <Router>
+          <Routes>
+            <Route path="/login" element={<LoginForm />} />
+          </Routes>
+        </Router>
       </div>
     </>
   );
