@@ -4,18 +4,27 @@ const LoginForm = () => {
   return (
     <div className="container">
       <form className="border">
-        <label htmlFor="username">
-          <b>Username</b>
-        </label>
-        <input type="text" placeholder="Enter Username" name="username" />
-        <label htmlFor="password">
-          <b>Password</b>
-        </label>
-        <input type="password" placeholder="Enter Password" name="password" />
-        <label htmlFor="checkbox">
-          <input type="checkbox" checked="checked" name="rememberb" />
-        </label>
-        <button type="submit">Login</button>
+        <div className="mb-2">
+          <label htmlFor="username">
+            <b>Username:</b>
+          </label>
+          <input type="text" placeholder="Enter Username" name="username" />
+        </div>
+        <div className="mb-2">
+          <label htmlFor="password">
+            <b>Password:</b>
+          </label>
+          <input type="password" placeholder="Enter Password" name="password" />
+        </div>
+        <div className="mb-2">
+          <label htmlFor="checkbox">
+            <input type="checkbox" name="remember" />
+            Remember
+          </label>
+        </div>
+        <div>
+          <button type="submit">Login</button>
+        </div>
       </form>
     </div>
   );
