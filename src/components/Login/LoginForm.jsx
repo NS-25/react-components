@@ -8,22 +8,34 @@ const LoginForm = () => {
           <label htmlFor="username">
             <b>Username:</b>
           </label>
-          <input type="text" placeholder="Enter Username" name="username" />
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            className="border"
+          />
         </div>
         <div className="mb-2">
           <label htmlFor="password">
             <b>Password:</b>
           </label>
-          <input type="password" placeholder="Enter Password" name="password" />
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            className="border"
+          />
         </div>
         <div className="mb-2">
           <label htmlFor="checkbox">
-            <input type="checkbox" name="remember" />
+            <input type="checkbox" name="remember" className="border" />
             Remember
           </label>
         </div>
         <div>
-          <button type="submit">Login</button>
+          <button type="submit" className="border rounded">
+            Login
+          </button>
         </div>
       </form>
     </div>
