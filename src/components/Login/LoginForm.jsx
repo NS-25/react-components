@@ -13,7 +13,7 @@ const LoginForm = () => {
         </label>
         <input type="password" placeholder="Enter Password" name="password" />
         <label htmlFor="checkbox">
-          <input type="checkbox" checked="checked" name="remember" />
+          <input type="checkbox" checked="checked" name="rememberb" />
         </label>
         <button type="submit">Login</button>
       </form>

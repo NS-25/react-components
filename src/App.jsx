@@ -3,6 +3,8 @@ import Form from "./components/Form";
 import { FormProvider, useFormContext } from "./context/FormContext";
 import UserProfileForm from "./components/UserProfileForm";
 import UserProfile from "./components/Form/UserProfile";
+import LoginForm from "./components/Login/LoginForm";
+
 const DisPlayForm = () => {
   const { formData } = useFormContext();
 
@@ -44,6 +46,10 @@ const App = () => {
       <div className="mt-4">
         <h2>User Profile</h2>
         <UserProfile onSubmit={handleUserSubmit} />
+      </div>
+      <div>
+        <p>User Login</p>
+        <LoginForm />
       </div>
     </>
   );
