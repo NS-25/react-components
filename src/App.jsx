@@ -34,20 +34,20 @@ const App = () => {
   };
   return (
     <>
-      <FormProvider>
+      {/* <FormProvider>
         <div className="container mt-5">
           <h1>Reusable Form</h1>
           <Form />
           <DisPlayForm />
         </div>
-      </FormProvider>
-      <div>
+      </FormProvider> */}
+      {/* <div>
         <UserProfileForm />
       </div>
       <div className="mt-4">
         <h2>User Profile</h2>
         <UserProfile onSubmit={handleUserSubmit} />
-      </div>
+      </div> */}
       <div>
         <Router>
           <Routes>
