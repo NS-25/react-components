@@ -5,6 +5,7 @@ import UserProfileForm from "./components/UserProfileForm";
 import UserProfile from "./components/Form/UserProfile";
 import LoginForm from "./components/Login/LoginForm";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import UserForm from "./components/LoginForm/UserForm";
 
 const DisPlayForm = () => {
   const { formData } = useFormContext();
@@ -54,6 +55,9 @@ const App = () => {
             <Route path="/login" element={<LoginForm />} />
           </Routes>
         </Router>
+      </div>
+      <div>
+        <UserForm />
       </div>
     </>
   );
