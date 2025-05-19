@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import "./LoginForm.css";
 
 const LoginForm = () => {
-  const [inputData, setInputData] = useState({
-    name: "",
-    password: "",
-  });
+  // const [inputData, setInputData] = useState({
+  //   name: "",
+  //   password: "",
+  // });
 
   const [username, setUsername] = useState({
     value: "",
@@ -14,8 +14,6 @@ const LoginForm = () => {
     errorMsg: "",
     isDirty: false,
   });
-
-  const [usernameValidity, setUsernameValidity] = useState({});
 
   const [password, setPassword] = useState({
     value: "",
@@ -30,6 +28,8 @@ const LoginForm = () => {
     errorMsg: "",
     isDirty: false,
   });
+
+  const [usernameValidity, setUsernameValidity] = useState({});
 
   useEffect(() => {
     if (username.isDirty) {
@@ -76,7 +76,7 @@ const LoginForm = () => {
   console.log("usernameValidity : ", usernameValidity);
   // console.log("password : ", password);
   return (
-    <div className="login-form-wrapper container">
+    <div className="login-form-wrapper">
       <form className="login-form border">
         <div className="mb-2">
           <label htmlFor="username">Username</label>
@@ -100,7 +100,7 @@ const LoginForm = () => {
               });
             }}
             // onBlur={(e) => {
-            //   console.log("we focuus");
+            //   console.log("we focus");
             //   setUsername({
             //     isDirty: false,
             //   });
@@ -126,7 +126,7 @@ const LoginForm = () => {
               });
             }}
             onFocus={(e) => {
-              console.log("we focuus");
+              console.log("we focus");
               setPassword({
                 isDirty: true,
               });
@@ -151,7 +151,7 @@ const LoginForm = () => {
           </label>
         </div>
         <div>
-          <button type="submit" className="rounded" onSubmit={handleSubmit}>
+          <button type="submit" className="rounded">
             Login
           </button>
         </div>
