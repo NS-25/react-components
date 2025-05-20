@@ -128,7 +128,54 @@ const LoginForm = () => {
           "Password must be at least 8 character and under under 15 character",
       };
     }
+
+    if (!/[a-z]/.test(password)) {
+      return {
+        value: password,
+        isValid: false,
+        message: "Password include at least one lowercase letter",
+      };
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      return {
+        value: password,
+        isValid: false,
+        message: "Password include at least one uppercase letter",
+      };
+    }
+
+    if (!/\d/.test(password)) {
+      return {
+        value: password,
+        isValid: false,
+        message: "Password include at least one digit",
+      };
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      return {
+        value: password,
+        isValid: false,
+        message: "Password include at least one special character",
+      };
+    }
+
+    if (/\s/.test(password)) {
+      return {
+        value: password,
+        isValid: false,
+        message: "Password include at least one special character",
+      };
+    }
+    return {
+      value: password,
+      isValid: true,
+      message: "",
+    };
   };
+
+  
 
   // console.log("username : ", username);
   // console.log("usernameValidity : ", usernameValidity);
