@@ -165,7 +165,7 @@ const LoginForm = () => {
       return {
         value: password,
         isValid: false,
-        message: "Password include at least one special character",
+        message: "Password must not includes space",
       };
     }
     return {
@@ -214,6 +214,7 @@ const LoginForm = () => {
             onFocus={(e) => {
               console.log("we focus");
               setUsername({
+                ...username,
                 isDirty: true,
               });
             }}
@@ -246,6 +247,7 @@ const LoginForm = () => {
             onFocus={(e) => {
               console.log("we focus");
               setPassword({
+                ...password,
                 isDirty: true,
               });
             }}
