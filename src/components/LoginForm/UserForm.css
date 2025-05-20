@@ -19,6 +19,7 @@ label {
 input {
   padding: 4px;
   background: #EEE;
+
 }
 
 input[name="checked"] {
@@ -31,7 +32,7 @@ button[type="submit"] {
   color: #ddd;
 }
 
-.field-errror {
+.field-error {
   display: block;
   font-size: 12px;
   color: red;
