@@ -175,7 +175,20 @@ const LoginForm = () => {
     };
   };
 
-  
+  const isValidRemember = () => {
+    if (!remember.checked) {
+      return {
+        value: remember,
+        isValid: false,
+        message: "You must be click the checkbox",
+      };
+    }
+    return {
+      value: remember,
+      isValid: false,
+      message: "",
+    };
+  };
 
   // console.log("username : ", username);
   // console.log("usernameValidity : ", usernameValidity);
