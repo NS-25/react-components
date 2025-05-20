@@ -65,6 +65,46 @@ const LoginForm = () => {
       };
     }
 
+    if (username && username.length > 15) {
+      return {
+        value: username,
+        isValid: false,
+        message: "Username must be under 15 characters",
+      };
+    }
+
+    if (username && !/^[A-Za-z]/.test(username)) {
+      return {
+        value: username,
+        isValid: false,
+        message: "Username must be start with a letter",
+      };
+    }
+
+    if (username && !/^[A-Za-z0-9_]+$/.test(username)) {
+      return {
+        value: username,
+        isValid: false,
+        message:
+          "Username must be only letters, numbers, and underscores allowed",
+      };
+    }
+
+    if (username && /(?:__|\.\.)/.test(username)) {
+      return {
+        value: username,
+        isValid: false,
+        message: "Username cannot be use consecutive underscores or dots",
+      };
+    }
+
+    if (username && /^\d+$/.test(username)) {
+      return {
+        value: username,
+        isValid: false,
+        message: "Username cannot be all number",
+      };
+    }
     return {
       value: username,
       isValid: true,
@@ -72,8 +112,11 @@ const LoginForm = () => {
     };
   };
 
-  console.log("username : ", username);
-  console.log("usernameValidity : ", usernameValidity);
+
+  
+
+  // console.log("username : ", username);
+  // console.log("usernameValidity : ", usernameValidity);
   // console.log("password : ", password);
   return (
     <div className="login-form-wrapper">
