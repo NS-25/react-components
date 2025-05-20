@@ -112,8 +112,23 @@ const LoginForm = () => {
     };
   };
 
-
-  
+  const isValidPassword = (password) => {
+    if (!password.trim()) {
+      return {
+        value: password,
+        isValid: false,
+        message: "Password is required",
+      };
+    }
+    if (password.length < 8 || password.length > 15) {
+      return {
+        value: password,
+        isValid: false,
+        message:
+          "Password must be at least 8 character and under under 15 character",
+      };
+    }
+  };
 
   // console.log("username : ", username);
   // console.log("usernameValidity : ", usernameValidity);
