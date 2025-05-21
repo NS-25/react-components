@@ -1,6 +1,7 @@
 import React from "react";
 import * as Yup from "yup";
 import { useState } from "react";
+import "./SignUp.css";
 
 // Define Yup schema
 
@@ -13,7 +14,8 @@ const schema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
-  Password: Yup.string()
+
+  password: Yup.string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
 });
@@ -29,12 +31,10 @@ const SignUp = () => {
   };
 
   // Handle form submit
-  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await schema.validate(form, { abortEarly: false });
-      alert("Sign up successful!\n" + JSON.stringify(form, null, 2));
       setForm({ username: "", email: "", password: "" });
       setErrors({});
     } catch (err) {
@@ -50,23 +50,8 @@ const SignUp = () => {
   };
   return (
     <>
-      <div
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#f0f4f8",
-        }}>
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            background: "#fff",
-            padding: "32px",
-            borderRadius: "8px",
-            boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
-            minWidth: "300px",
-          }}>
+      <div className="form-wrapper">
+        <form onSubmit={handleSubmit} className="form-container">
           <div>
             <label>Username:</label>
             <input
