@@ -17,6 +17,10 @@ const schema = Yup.object().shape({
 });
 
 const SignUp = () => {
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [errors, setErrors] = useState({});
+
+// Handle input change
   return (
     <>
       <form onSubmit={handleSubmit}>
