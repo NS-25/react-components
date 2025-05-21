@@ -1,5 +1,21 @@
 import React from "react";
 
+// Define Yup schema
+
+const schema = Yup.object().shape({
+  username: Yup.string()
+    .min(3, "Username too short")
+    .max(15, "Username too long")
+    .required("Username is required"),
+
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  Password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
+
 const SignUp = () => {
   return (
     <>
