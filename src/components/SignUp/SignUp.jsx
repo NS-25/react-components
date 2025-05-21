@@ -20,7 +20,11 @@ const SignUp = () => {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
 
-// Handle input change
+  // Handle input change
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change.
+  };
   return (
     <>
       <form onSubmit={handleSubmit}>
