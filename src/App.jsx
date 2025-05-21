@@ -6,6 +6,7 @@ import UserProfile from "./components/Form/UserProfile";
 import LoginForm from "./components/Login/LoginForm";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import UserForm from "./components/LoginForm/UserForm";
+import SignUp from "./components/SignUp/SignUp";
 
 const DisPlayForm = () => {
   const { formData } = useFormContext();
@@ -58,6 +59,9 @@ const App = () => {
       </div>
       <div>
         <UserForm />
+      </div>
+      <div>
+        <SignUp />
       </div>
     </>
   );

@@ -1,4 +1,6 @@
 import React from "react";
+import * as Yup from "yup";
+import { useState } from "react";
 
 // Define Yup schema
 
@@ -25,48 +27,86 @@ const SignUp = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change.
   };
+
+  // Handle form submit
+  // Handle form submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await schema.validate(form, { abortEarly: false });
+      alert("Sign up successful!\n" + JSON.stringify(form, null, 2));
+      setForm({ username: "", email: "", password: "" });
+      setErrors({});
+    } catch (err) {
+      // Map Yup errors to object
+      const newErrors = {};
+      if (err.inner) {
+        err.inner.forEach((error) => {
+          newErrors[error.path] = error.message;
+        });
+      }
+      setErrors(newErrors);
+    }
+  };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={form.username}
-            onChange={handleChange}
-          />
-          {errors.username && (
-            <div style={{ color: "red" }}>{errors.username}</div>
-          )}
-        </div>
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#f0f4f8",
+        }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            background: "#fff",
+            padding: "32px",
+            borderRadius: "8px",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+            minWidth: "300px",
+          }}>
+          <div>
+            <label>Username:</label>
+            <input
+              type="text"
+              name="username"
+              value={form.username}
+              onChange={handleChange}
+            />
+            {errors.username && (
+              <div style={{ color: "red" }}>{errors.username}</div>
+            )}
+          </div>
 
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-          />
-          {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
-        </div>
+          <div>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+            />
+            {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
+          </div>
 
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-          />
-          {errors.password && (
-            <div style={{ color: "red" }}>{errors.password}</div>
-          )}
-        </div>
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+            />
+            {errors.password && (
+              <div style={{ color: "red" }}>{errors.password}</div>
+            )}
+          </div>
 
-        <button type="submit">Sign Up</button>
-      </form>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
     </>
   );
 };
