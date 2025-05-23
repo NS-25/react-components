@@ -13,9 +13,9 @@ const schema = Yup.object().shape({
     .matches(/[0-9]/, "Must contain a number")
     .matches(/[@$!%*#?&]/, "Must contain a special character"),
 
-  confirmpassword: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("newPassword")], "Passwords must match")
+    .required("Please confirm your password"),
 });
 
 const PasswordReset = () => {
