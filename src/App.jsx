@@ -63,6 +63,9 @@ const App = () => {
       <div>
         <SignUp />
       </div>
+      <div>
+        <passwordReset />
+      </div>
     </>
   );
 };
