@@ -7,7 +7,7 @@ import LoginForm from "./components/Login/LoginForm";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import UserForm from "./components/LoginForm/UserForm";
 import SignUp from "./components/SignUp/SignUp";
-
+import PasswordReset from "./components/PasswordReset/passwordReset";
 const DisPlayForm = () => {
   const { formData } = useFormContext();
 
@@ -64,7 +64,7 @@ const App = () => {
         <SignUp />
       </div>
       <div>
-        <passwordReset />
+        <PasswordReset />
       </div>
     </>
   );
