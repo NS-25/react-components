@@ -25,6 +25,9 @@ const PasswordReset = () => {
   });
   const [error, setError] = useState({});
 
+  // password reset hide and show state
+  const [showReset, setShowReset] = useState(false);
+
   const handleChange = (e) => {
     setPassKey({ ...passKey, [e.target.name]: e.target.value });
     setError({ ...error, [e.target.name]: "" });

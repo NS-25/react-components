@@ -52,7 +52,7 @@ const App = () => {
       </div> */}
       <div>
         <Routes>
-          <Route path="/loginForm" element={<LoginForm />} />
+          <Route path="/loginform" element={<LoginForm />} />
         </Routes>
       </div>
       <div>
