@@ -2,6 +2,7 @@ import React from "react";
 import * as Yup from "yup";
 import { useState } from "react";
 import "./SignUp.css";
+import { Link } from "react-router-dom";
 
 // Define Yup schema
 
@@ -90,6 +91,7 @@ const SignUp = () => {
           </div>
 
           <button type="submit">Sign Up</button>
+          <Link to="/reset" >Reset Password</Link>
         </form>
       </div>
     </>

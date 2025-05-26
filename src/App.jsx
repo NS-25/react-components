@@ -51,20 +51,22 @@ const App = () => {
         <UserProfile onSubmit={handleUserSubmit} />
       </div> */}
       <div>
-        <Router>
-          <Routes>
-            <Route path="/login" element={<LoginForm />} />
-          </Routes>
-        </Router>
+        <Routes>
+          <Route path="/loginForm" element={<LoginForm />} />
+        </Routes>
       </div>
       <div>
         <UserForm />
       </div>
       <div>
-        <SignUp />
+        <Routes>
+          <Route path="/login" element={<SignUp />} />
+        </Routes>
       </div>
       <div>
-        <PasswordReset />
+        <Routes>
+          <Route path="/reset" element={<PasswordReset />} />
+        </Routes>
       </div>
     </>
   );
