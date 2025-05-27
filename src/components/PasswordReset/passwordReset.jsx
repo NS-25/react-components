@@ -32,7 +32,16 @@ const PasswordReset = () => {
     setError({ ...error, [e.target.name]: "" });
   };
 
-  // handle blur stage
+  // handle blur state
+  const handleBlur = async (e) => {
+    const { name, value } = e.target;
+    try {
+      await schema.validate(name, { ...passKey, [name]: value });
+      setError((prev) => ({ ...prev, [name]: "" }));
+    } catch (err) {
+      setError((prev) => ({ ...prev, [name]: err.message }));
+    }
+  };
 
   // Handle form submit
   const handleSubmit = async (e) => {
