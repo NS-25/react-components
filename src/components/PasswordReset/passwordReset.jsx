@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import * as Yup from "yup";
-
+import "./PasswordReset.css";
 // Define Yup schema
 
 const schema = Yup.object().shape({
@@ -13,7 +13,7 @@ const schema = Yup.object().shape({
     .matches(/[0-9]/, "Must contain a number")
     .matches(/[@$!%*#?&]/, "Must contain a special character"),
 
-  confirmPassword: Yup.string()
+  confirmpassword: Yup.string()
     .oneOf([Yup.ref("newPassword")], "Passwords must match")
     .required("Please confirm your password"),
 });
@@ -26,12 +26,13 @@ const PasswordReset = () => {
   const [error, setError] = useState({});
 
   // password reset hide and show state
-  const [showReset, setShowReset] = useState(false);
 
   const handleChange = (e) => {
     setPassKey({ ...passKey, [e.target.name]: e.target.value });
     setError({ ...error, [e.target.name]: "" });
   };
+
+  // handle blur stage
 
   // Handle form submit
   const handleSubmit = async (e) => {
@@ -53,10 +54,12 @@ const PasswordReset = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="reset-wrapper">
+      <form onSubmit={handleSubmit} className="reset-form">
         <div className="mb-2">
-          <label htmlFor="password">New Password</label>
+          <label htmlFor="password" className="reset-label">
+            New Password
+          </label>
           <input
             type="password"
             name="password"
@@ -68,7 +71,9 @@ const PasswordReset = () => {
           )}
         </div>
         <div className="mb-2">
-          <label htmlFor="password">Re-enter Your Password</label>
+          <label htmlFor="password" className="reset-label">
+            Re-enter Your Password
+          </label>
           <input
             type="password"
             name="confirmpassword"
@@ -80,7 +85,7 @@ const PasswordReset = () => {
           )}
         </div>
         <div className="mb-2">
-          <button className="border rounded" type="submit">
+          <button className="reset-btn" type="submit">
             Change Password
           </button>
         </div>

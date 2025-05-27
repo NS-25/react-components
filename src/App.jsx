@@ -50,24 +50,11 @@ const App = () => {
         <h2>User Profile</h2>
         <UserProfile onSubmit={handleUserSubmit} />
       </div> */}
-      <div>
-        <Routes>
-          <Route path="/loginform" element={<LoginForm />} />
-        </Routes>
-      </div>
-      <div>
-        <UserForm />
-      </div>
-      <div>
-        <Routes>
-          <Route path="/login" element={<SignUp />} />
-        </Routes>
-      </div>
-      <div>
-        <Routes>
-          <Route path="/reset" element={<PasswordReset />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/loginform" element={<LoginForm />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/reset" element={<PasswordReset />} />
+      </Routes>
     </>
   );
 };
