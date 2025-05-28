@@ -26,12 +26,34 @@ const PasswordReset = () => {
   });
   const [error, setError] = useState({});
 
+  const [passwordReset, setPasswordReset] = useState({
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [err, setErr] = useState({});
+
   // password reset hide and show state
 
   const handleChange = (e) => {
     setPassKey({ ...passKey, [e.target.name]: e.target.value });
     setError({ ...error, [e.target.name]: "" });
   };
+
+  // const handleChange = (e) {
+  //   setPasswordReset ({...passwordReset, [e.target.name]: e.target.value});
+  //   setErr({...err, [e.target.name]: ""});d
+  // }
+
+  // const handleChange = (e) => {
+  //   setPasswordReset({ ...passwordReset, [e.target.name]: e.target.value });
+  //   setErr({ ...err, [e.target.name]: "" });
+  // };
+
+  // const handleChange = (e) => {
+  //   setPasswordReset({ ...passwordReset, [e.target.name]: e.target.value });
+  //   setErr({ ...err, [e.target.name]: "" });
+  // };
 
   // handle blur state
   const handleBlur = async (e) => {
