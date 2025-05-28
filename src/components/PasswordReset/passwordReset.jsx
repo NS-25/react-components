@@ -33,7 +33,7 @@ const PasswordReset = () => {
 
   const [err, setErr] = useState({});
 
-  // password reset hide and show state
+  password reset hide and show state
 
   const handleChange = (e) => {
     setPassKey({ ...passKey, [e.target.name]: e.target.value });
@@ -56,28 +56,51 @@ const PasswordReset = () => {
   // };
 
   // handle blur state
-  const handleBlur = async (e) => {
-    const { name, value } = e.target;
+  // const handleBlur = async (e) => {
+  //   const { name, value } = e.target;
 
-    // // Prepare the object to validate: only the field being blurred
-    // let fieldToValidate = { [name]: value };
+  //   // // Prepare the object to validate: only the field being blurred
+  //   // let fieldToValidate = { [name]: value };
 
-    if (name === "password" && !passKey.confirmPassword) {
-      try {
-        await schema.fields.password.validate(value);
-        setError((prev) => ({ ...prev, [name]: "" }));
-      } catch (err) {
-        setError((prev) => ({ ...prev, [name]: err.message }));
-      }
-    } else if (name === "confirmPassword" && passKey.password) {
-      try {
-        await schema.fields.confirmPassword.validate(value);
-        setError((prev) => ({ ...prev, [name]: "" }));
-      } catch (err) {
-        setError((prev) => ({ ...prev, [name]: err.message }));
-      }
-    }
-  };
+  //   if (name === "password" && !passKey.confirmPassword) {
+  //     try {
+  //       await schema.fields.password.validate(value);
+  //       setError((prev) => ({ ...prev, [name]: "" }));
+  //     } catch (err) {
+  //       setError((prev) => ({ ...prev, [name]: err.message }));
+  //     }
+  //   } else if (name === "confirmPassword" && passKey.password) {
+  //     try {
+  //       await schema.fields.confirmPassword.validate(value);
+  //       setError((prev) => ({ ...prev, [name]: "" }));
+  //     } catch (err) {
+  //       setError((prev) => ({ ...prev, [name]: err.message }));
+  //     }
+  //   }
+  // };
+
+  // const handleBlur = async (e) => {
+  //   const { name, value } = e.target;
+
+  //   let fieldToValidate = { [name]: value };
+  //   if(name === "password" && !passwordReset.confirmPassword){
+  //     try{
+  //       await schema.fields.password.validate(value);
+  //       setErr((prev) => ({...prev, [name]: ""}));
+  //     } catch(err){
+  //       setErr((prev) => ({...prev, [name]: err.message}))
+  //     }
+  //   }
+  //   else if (name === "confirmPassword" && passwordReset.password){
+  //     try{
+  //       await schema.fields.confirmPassword.validate(value);
+  //       setErr((prev) => ({...prev, [name]: ""}));
+  //     }
+  //     catch(err) {
+  //       setErr((prev) => ({...prev, [name]: err.message}))
+  //     }
+  //   }
+  // };
 
   // Handle form submit
   const handleSubmit = async (e) => {
