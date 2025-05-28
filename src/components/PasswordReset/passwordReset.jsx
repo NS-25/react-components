@@ -30,43 +30,28 @@ const PasswordReset = () => {
 
   const handleChange = (e) => {
     setPassKey({ ...passKey, [e.target.name]: e.target.value });
-    console.log("setPassKey : ", { [e.target.name]: e.target.value });
     setError({ ...error, [e.target.name]: "" });
-    // Reset error for the field being changed
-    // setError((prev) => ({ ...prev, [e.target.name]: "" }));
-    console.log("handleChange error : ", error);
-    console.log("handleChange error : ", { ...error, [e.target.name]: "" });
   };
 
   // handle blur state
   const handleBlur = async (e) => {
-    console.log("handleBlur : ", e);
     const { name, value } = e.target;
-    console.log(name, value);
 
     // // Prepare the object to validate: only the field being blurred
-    let fieldToValidate = { [name]: value };
+    // let fieldToValidate = { [name]: value };
 
     if (name === "password" && !passKey.confirmPassword) {
-      // If password is being validated and confirmPassword is empty,
-      // we want to validate only the password field
-      fieldToValidate = { password: value };
       try {
         await schema.fields.password.validate(value);
         setError((prev) => ({ ...prev, [name]: "" }));
       } catch (err) {
-        console.log("error : ", err);
         setError((prev) => ({ ...prev, [name]: err.message }));
       }
     } else if (name === "confirmPassword" && passKey.password) {
-      // If confirmPassword is being validated, we want to validate both fields
-      fieldToValidate = { ...passKey, [name]: value };
-
       try {
-        const res = await schema.validate(fieldToValidate);
+        await schema.fields.confirmPassword.validate(value);
         setError((prev) => ({ ...prev, [name]: "" }));
       } catch (err) {
-        console.log("error : ", err);
         setError((prev) => ({ ...prev, [name]: err.message }));
       }
     }
