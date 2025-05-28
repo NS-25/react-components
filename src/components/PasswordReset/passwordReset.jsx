@@ -11,17 +11,18 @@ const schema = Yup.object().shape({
     .matches(/[A-Z]/, "Must contain an uppercase letter")
     .matches(/[a-z]/, "Must contain a lowercase letter")
     .matches(/[0-9]/, "Must contain a number")
-    .matches(/[@$!%*#?&]/, "Must contain a special character"),
+    .matches(/[@$!%*#?&]/, "Must contain a special character")
+    .matches(/^\S*$/, "No spaces allowed"),
 
-  confirmpassword: Yup.string()
-    .oneOf([Yup.ref("newPassword")], "Passwords must match")
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Please confirm your password"),
 });
 
 const PasswordReset = () => {
   const [passKey, setPassKey] = useState({
     password: "",
-    confirmpassword: "",
+    confirmPassword: "",
   });
   const [error, setError] = useState({});
 
@@ -29,17 +30,45 @@ const PasswordReset = () => {
 
   const handleChange = (e) => {
     setPassKey({ ...passKey, [e.target.name]: e.target.value });
+    console.log("setPassKey : ", { [e.target.name]: e.target.value });
     setError({ ...error, [e.target.name]: "" });
+    // Reset error for the field being changed
+    // setError((prev) => ({ ...prev, [e.target.name]: "" }));
+    console.log("handleChange error : ", error);
+    console.log("handleChange error : ", { ...error, [e.target.name]: "" });
   };
 
   // handle blur state
   const handleBlur = async (e) => {
+    console.log("handleBlur : ", e);
     const { name, value } = e.target;
-    try {
-      await schema.validate(name, { ...passKey, [name]: value });
-      setError((prev) => ({ ...prev, [name]: "" }));
-    } catch (err) {
-      setError((prev) => ({ ...prev, [name]: err.message }));
+    console.log(name, value);
+
+    // // Prepare the object to validate: only the field being blurred
+    let fieldToValidate = { [name]: value };
+
+    if (name === "password" && !passKey.confirmPassword) {
+      // If password is being validated and confirmPassword is empty,
+      // we want to validate only the password field
+      fieldToValidate = { password: value };
+      try {
+        await schema.fields.password.validate(value);
+        setError((prev) => ({ ...prev, [name]: "" }));
+      } catch (err) {
+        console.log("error : ", err);
+        setError((prev) => ({ ...prev, [name]: err.message }));
+      }
+    } else if (name === "confirmPassword" && passKey.password) {
+      // If confirmPassword is being validated, we want to validate both fields
+      fieldToValidate = { ...passKey, [name]: value };
+
+      try {
+        const res = await schema.validate(fieldToValidate);
+        setError((prev) => ({ ...prev, [name]: "" }));
+      } catch (err) {
+        console.log("error : ", err);
+        setError((prev) => ({ ...prev, [name]: err.message }));
+      }
     }
   };
 
@@ -48,9 +77,10 @@ const PasswordReset = () => {
     e.preventDefault();
     try {
       await schema.validate(passKey, { abortEarly: false });
-      setPassKey({ password: "", confirmpassword: "" });
+      setPassKey({ password: "", confirmPassword: "" });
       setError({});
     } catch (err) {
+      console.log("err : ", err);
       // Map Yup errors to object
       const newErrors = {};
       if (err.inner) {
@@ -74,6 +104,7 @@ const PasswordReset = () => {
             name="password"
             value={passKey.password}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
           {error.password && (
             <div style={{ color: "red" }}>{error.password}</div>
@@ -81,16 +112,17 @@ const PasswordReset = () => {
         </div>
         <div className="mb-2">
           <label htmlFor="password" className="reset-label">
-            Re-enter Your Password
+            Confirm Password
           </label>
           <input
             type="password"
-            name="confirmpassword"
-            value={passKey.confirmpassword}
+            name="confirmPassword"
+            value={passKey.confirmPassword}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
-          {error.confirmpassword && (
-            <div style={{ color: "red" }}>{error.confirmpassword}</div>
+          {error.confirmPassword && (
+            <div style={{ color: "red" }}>{error.confirmPassword}</div>
           )}
         </div>
         <div className="mb-2">
