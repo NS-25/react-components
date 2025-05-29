@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import UserForm from "./components/LoginForm/UserForm";
 import SignUp from "./components/SignUp/SignUp";
 import PasswordReset from "./components/PasswordReset/passwordReset";
+import EmailValidate from "./components/customValidate/EmailValidate";
 const DisPlayForm = () => {
   const { formData } = useFormContext();
 
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/loginform" element={<LoginForm />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<PasswordReset />} />
+        <Route path="/email" element={<EmailValidate />} />
       </Routes>
     </>
   );

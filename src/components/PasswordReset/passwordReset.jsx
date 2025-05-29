@@ -56,28 +56,28 @@ const PasswordReset = () => {
   // };
 
   // handle blur state
-  // const handleBlur = async (e) => {
-  //   const { name, value } = e.target;
+  const handleBlur = async (e) => {
+    const { name, value } = e.target;
 
-  // // Prepare the object to validate: only the field being blurred
-  // let fieldToValidate = { [name]: value };
+    // Prepare the object to validate: only the field being blurred
+    // let fieldToValidate = { [name]: value };
 
-  //   if (name === "password" && !passKey.confirmPassword) {
-  //     try {
-  //       await schema.fields.password.validate(value);
-  //       setError((prev) => ({ ...prev, [name]: "" }));
-  //     } catch (err) {
-  //       setError((prev) => ({ ...prev, [name]: err.message }));
-  //     }
-  //   } else if (name === "confirmPassword" && passKey.password) {
-  //     try {
-  //       await schema.fields.confirmPassword.validate(value);
-  //       setError((prev) => ({ ...prev, [name]: "" }));
-  //     } catch (err) {
-  //       setError((prev) => ({ ...prev, [name]: err.message }));
-  //     }
-  //   }
-  // };
+    if (name === "password" && !passKey.confirmPassword) {
+      try {
+        await schema.fields.password.validate(value);
+        setError((prev) => ({ ...prev, [name]: "" }));
+      } catch (err) {
+        setError((prev) => ({ ...prev, [name]: err.message }));
+      }
+    } else if (name === "confirmPassword" && passKey.password) {
+      try {
+        await schema.fields.confirmPassword.validate(value);
+        setError((prev) => ({ ...prev, [name]: "" }));
+      } catch (err) {
+        setError((prev) => ({ ...prev, [name]: err.message }));
+      }
+    }
+  };
 
   // const handleBlur = async (e) => {
   //   const { name, value } = e.target;
@@ -157,8 +157,8 @@ const PasswordReset = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {error.password && <p className="error-msg">{error.password}</p>}
         </div>
+        {error.password && <p className="error-msg">{error.password}</p>}
         <div className="mb-2">
           <label htmlFor="password" className="reset-label">
             Confirm Password
@@ -170,10 +170,10 @@ const PasswordReset = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {error.confirmPassword && (
-            <p className="error-msg">{error.confirmPassword}</p>
-          )}
         </div>
+        {error.confirmPassword && (
+          <p className="error-msg">{error.confirmPassword}</p>
+        )}
         <div className="mb-2">
           <button className="reset-btn" type="submit">
             Change Password
