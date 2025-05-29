@@ -59,8 +59,8 @@ const PasswordReset = () => {
   // const handleBlur = async (e) => {
   //   const { name, value } = e.target;
 
-    // // Prepare the object to validate: only the field being blurred
-    // let fieldToValidate = { [name]: value };
+  // // Prepare the object to validate: only the field being blurred
+  // let fieldToValidate = { [name]: value };
 
   //   if (name === "password" && !passKey.confirmPassword) {
   //     try {
@@ -131,7 +131,7 @@ const PasswordReset = () => {
       setPassKey({ password: "", confirmPassword: "" });
       setError({});
     } catch (err) {
-      console.log("err : ", err);
+      // console.log("err : ", err);
       // Map Yup errors to object
       const newErrors = {};
       if (err.inner) {
@@ -157,9 +157,7 @@ const PasswordReset = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {error.password && (
-            <div style={{ color: "red" }}>{error.password}</div>
-          )}
+          {error.password && <p className="error-msg">{error.password}</p>}
         </div>
         <div className="mb-2">
           <label htmlFor="password" className="reset-label">
@@ -173,7 +171,7 @@ const PasswordReset = () => {
             onBlur={handleBlur}
           />
           {error.confirmPassword && (
-            <div style={{ color: "red" }}>{error.confirmPassword}</div>
+            <p className="error-msg">{error.confirmPassword}</p>
           )}
         </div>
         <div className="mb-2">
