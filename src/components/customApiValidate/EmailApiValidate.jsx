@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import * as Yup from "yup";
-import "./EmailValidate.css";
+import "./EmailApiValidate.css";
 
 // Add a custom email method to Yup
 Yup.addMethod(Yup.string, "email", function validateEmail(message) {

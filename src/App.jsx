@@ -9,6 +9,7 @@ import UserForm from "./components/LoginForm/UserForm";
 import SignUp from "./components/SignUp/SignUp";
 import PasswordReset from "./components/PasswordReset/passwordReset";
 import EmailValidate from "./components/customValidate/EmailValidate";
+import EmailApiValidate from "./components/customApiValidate/EmailApiValidate";
 const DisPlayForm = () => {
   const { formData } = useFormContext();
 
@@ -56,6 +57,7 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<PasswordReset />} />
         <Route path="/email" element={<EmailValidate />} />
+        <Route path="/email-api-validate" element={<EmailApiValidate />} />
       </Routes>
     </>
   );
