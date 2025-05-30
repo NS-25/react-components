@@ -8,13 +8,13 @@ const schema = Yup.object({
     .email("Invalid email format")
     .required("Email is required")
     .matches(
-      /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/,
+      /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
       "Email must contain special character"
     ),
 });
 const EmailValidate = () => {
   const [emailField, setEmailField] = useState({ email: "" });
-  const [error, setError] = useState({ email: "this is error message" });
+  const [error, setError] = useState({});
 
   const handleChange = (e) => {
     setEmailField({ ...emailField, [e.target.name]: e.target.value });
@@ -33,8 +33,17 @@ const EmailValidate = () => {
       setError((prev) => ({ ...prev, email: err.message }));
     }
   };
-  console.log("error from state : ", error);
-  const handleSubmit = async (e) => {};
+  // console.log("error from state : ", error);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      await schema.validate(emailField, {abortEarly: false});
+      setEmailField({email: ""});
+      setError({});
+    } catch(err){
+
+    }
+  };
 
   return (
     <div className="form-wrapper">
