@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useState } from "react";
 import * as Yup from "yup";
 import "./EmailApiValidate.css";
@@ -28,14 +29,32 @@ Yup.addMethod(Yup.string, "isCompanyEmail", function validateEmail(message) {
   });
 });
 
-// sann@acorntech.us
-// @acorntech.us
+Yup.addMethod(Yup.string, "isExistingEmail", function validateEmail(message) {
+  return this.test("isExistingEmail", "Email already exist", async (value) => {
+    console.log("isExistingEmail called");
+
+    if (!value) return false;
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/is-existing-email",
+        { email: value }
+      );
+
+      if (response.data.isExistingEmail) return false;
+      return true;
+    } catch (error) {
+      console.error("API error:", error);
+      return false;
+    }
+  });
+});
 
 const schema = Yup.object({
   email: Yup.string()
     .required("Email is required")
     .email("Invalid email format")
-    .isCompanyEmail(),
+    .isCompanyEmail()
+    .isExistingEmail(),
   // .test(
   //   "isCompanyEmail",
   //   "Please enter a valid company email (e.g., user@acorntech.us)",
@@ -45,6 +64,7 @@ const schema = Yup.object({
   //   }
   // ),
 });
+
 const EmailValidate = () => {
   const [emailField, setEmailField] = useState({ email: "" });
   const [error, setError] = useState({});
@@ -59,7 +79,7 @@ const EmailValidate = () => {
     const { name, value } = e.target;
     // console.log(" name :", name);
     try {
-      await schema.fields.email.validate(value);
+      await schema.validateAt("email", { email: value });
       setError((prev) => ({ ...prev, email: "" }));
     } catch (err) {
       console.log("err :", err.message);
