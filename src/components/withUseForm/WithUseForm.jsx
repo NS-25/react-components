@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import * as Yup from "yup";
 import "./WithUseForm.css";
 
@@ -17,7 +17,12 @@ const schema = Yup.object().shape({
 });
 
 const WithUseForm = () => {
-  const { register, handleSubmit } = useForm();
+  // const { register, handleSubmit , formState: {errors}} = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data, e) => console.log(data, e);
   const onError = (errors, e) => console.log(errors, e);
@@ -28,13 +33,23 @@ const WithUseForm = () => {
         <label htmlFor="email" className="email-label">
           Email*
         </label>
-        <input {...register("email")} type="email" className="border" />
-        <label htmlFor="password">Password*</label>
-        <input
-          {...register("password")}
-          type="password"
-          className="border flex"
+        <Controller
+          name="email"
+          control={control}
+          render={(field) => {
+            <input type="email" {...field} className="border" />;
+          }}
         />
+        {errors.email && <p className="error-text">{errors.message}</p>}
+        <label htmlFor="password">Password*</label>
+        <Controller
+          name="password"
+          control={control}
+          render={(field) => {
+            <input type="password" {...field} className="border flex" />;
+          }}
+        />
+        {errors.password && <p className="error-text">{errors.message}</p>}
         <div>
           <button className="email-btn" type="submit">
             Submit
