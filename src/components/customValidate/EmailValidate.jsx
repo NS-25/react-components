@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import "./EmailValidate.css";
 
@@ -46,6 +47,12 @@ const schema = Yup.object({
   // ),
 });
 const EmailValidate = () => {
+  const {
+    register,
+    handleSubmitEmail,
+    formState: { errors },
+  } = useForm();
+
   const [emailField, setEmailField] = useState({ email: "" });
   const [error, setError] = useState({});
 
@@ -80,7 +87,7 @@ const EmailValidate = () => {
 
   return (
     <div className="form-wrapper">
-      <form className="form-field" onSubmit={handleSubmit}>
+      <form className="form-field" onSubmit={handleSubmitEmail}>
         <label htmlFor="email" className="email-label">
           Email*
         </label>
